@@ -1,12 +1,14 @@
 public class Etudiant {
     String nom;
+    String sexe;
     Filiere filiere;
     int annee;
     Parcours[] antecedent;
     Parents parents;
 
-    Etudiant(String nom, Filiere filiere, int annee, Parents parents, Parcours[] antecedent) {
+    Etudiant(String nom, String sexe, Filiere filiere, int annee, Parents parents, Parcours[] antecedent) {
         this.nom = nom;
+        this.sexe = sexe;
         this.filiere = filiere;
         this.annee = annee;
         this.parents = parents;
@@ -50,23 +52,29 @@ public class Etudiant {
 
     public boolean isBoursier() {
         double sommeSalaires = this.getSalaire();
-        if (sommeSalaires < this.filiere.salaireMax && !this.isRedoublant()) {
+        if (sommeSalaires <= this.filiere.salaireMax && !this.isRedoublant()) {
             return true;
         }
         return false;
     }
 
     public double[] getMoyenne() {
-        double[] moyennes = new double[antecedent.length];
+        if (this.antecedent == null) {
+            return new double[0];
+        }
 
-        for (int i = 0; i < antecedent.length; i++) {
+        double[] moyennes = new double[this.antecedent.length];
+
+        for (int i = 0; i < this.antecedent.length; i++) {
             double somme = 0;
             int sommeCoef = 0;
 
-            if (this.antecedent[i].notes != null) {
+            if (this.antecedent[i] != null && this.antecedent[i].notes != null) {
                 for (int j = 0; j < this.antecedent[i].notes.length; j++) {
-                    somme += this.antecedent[i].notes[j].valeur * this.antecedent[i].notes[j].coefficient;
-                    sommeCoef += this.antecedent[i].notes[j].coefficient;
+                    if (this.antecedent[i].notes[j] != null) {
+                        somme += this.antecedent[i].notes[j].valeur * this.antecedent[i].notes[j].coefficient;
+                        sommeCoef += this.antecedent[i].notes[j].coefficient;
+                    }
                 }
             }
 
@@ -79,9 +87,9 @@ public class Etudiant {
     public double getBourse(double moyenne) {
         if (moyenne >= 16) {
             return this.filiere.bourseMax * 3 / 3;
-        } else if (moyenne >= 14) {
+        } else if (moyenne >= 14 && moyenne < 16) {
             return this.filiere.bourseMax * 2 / 3;
-        } else if (moyenne >= 12) {
+        } else if (moyenne >= 12 && moyenne < 14) {
             return this.filiere.bourseMax * 1 / 3;
         } else {
             return 0;

@@ -1,3 +1,8 @@
+package personne;
+
+import univ.*;
+import date.*;
+
 public class Etudiant {
     String nom;
     String sexe;
@@ -6,7 +11,55 @@ public class Etudiant {
     Parcours[] antecedent;
     Parents parents;
 
-    Etudiant(String nom, String sexe, Filiere filiere, int annee, Parents parents, Parcours[] antecedent) {
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getSexe() {
+        return sexe;
+    }
+
+    public void setSexe(String sexe) {
+        this.sexe = sexe;
+    }
+
+    public Filiere getFiliere() {
+        return filiere;
+    }
+
+    public void setFiliere(Filiere filiere) {
+        this.filiere = filiere;
+    }
+
+    public int getAnnee() {
+        return annee;
+    }
+
+    public void setAnnee(int annee) {
+        this.annee = annee;
+    }
+
+    public Parcours[] getAntecedent() {
+        return antecedent;
+    }
+
+    public void setAntecedent(Parcours[] antecedent) {
+        this.antecedent = antecedent;
+    }
+
+    public Parents getParents() {
+        return parents;
+    }
+
+    public void setParents(Parents parents) {
+        this.parents = parents;
+    }
+
+    public Etudiant(String nom, String sexe, Filiere filiere, int annee, Parents parents, Parcours[] antecedent) {
         this.nom = nom;
         this.sexe = sexe;
         this.filiere = filiere;
@@ -25,7 +78,7 @@ public class Etudiant {
 
     public boolean isRedoublant() {
         for (int i = 1; i < antecedent.length; i++) {
-            if (this.antecedent[i].annee == this.antecedent[i - 1].annee) {
+            if (this.antecedent[i].getAnnee() == this.antecedent[i - 1].getAnnee()) {
                 return true;
             }
         }
@@ -36,8 +89,8 @@ public class Etudiant {
         int[] anneeRedouble = new int[antecedent.length];
         int indiceR = 0;
         for (int i = 1; i < antecedent.length; i++) {
-            if (this.antecedent[i].annee == this.antecedent[i - 1].annee) {
-                anneeRedouble[indiceR] = this.antecedent[i].annee;
+            if (this.antecedent[i].getAnnee() == this.antecedent[i - 1].getAnnee()) {
+                anneeRedouble[indiceR] = this.antecedent[i].getAnnee();
                 indiceR++;
             }
         }
@@ -52,7 +105,7 @@ public class Etudiant {
 
     public boolean isBoursier() {
         double sommeSalaires = this.getSalaire();
-        if (sommeSalaires <= this.filiere.salaireMax && !this.isRedoublant()) {
+        if (sommeSalaires <= this.filiere.getSalaireMax() && !this.isRedoublant()) {
             return true;
         }
         return false;
@@ -69,11 +122,12 @@ public class Etudiant {
             double somme = 0;
             int sommeCoef = 0;
 
-            if (this.antecedent[i] != null && this.antecedent[i].notes != null) {
-                for (int j = 0; j < this.antecedent[i].notes.length; j++) {
-                    if (this.antecedent[i].notes[j] != null) {
-                        somme += this.antecedent[i].notes[j].valeur * this.antecedent[i].notes[j].coefficient;
-                        sommeCoef += this.antecedent[i].notes[j].coefficient;
+            if (this.antecedent[i] != null && this.antecedent[i].getNotes() != null) {
+                for (int j = 0; j < this.antecedent[i].getNotes().length; j++) {
+                    if (this.antecedent[i].getNotes()[j] != null) {
+                        somme += this.antecedent[i].getNotes()[j].getValeur()
+                                * this.antecedent[i].getNotes()[j].getCoefficient();
+                        sommeCoef += this.antecedent[i].getNotes()[j].getCoefficient();
                     }
                 }
             }
@@ -86,13 +140,14 @@ public class Etudiant {
 
     public double getBourse(double moyenne) {
         if (moyenne >= 16) {
-            return this.filiere.bourseMax * 3 / 3;
+            return this.filiere.getBourseMax() * 3 / 3;
         } else if (moyenne >= 14 && moyenne < 16) {
-            return this.filiere.bourseMax * 2 / 3;
+            return this.filiere.getBourseMax() * 2 / 3;
         } else if (moyenne >= 12 && moyenne < 14) {
-            return this.filiere.bourseMax * 1 / 3;
+            return this.filiere.getBourseMax() * 1 / 3;
         } else {
             return 0;
         }
     }
+
 }

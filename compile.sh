@@ -6,4 +6,4 @@ javac -d . Matiere.java
 javac -d . Parcours.java
 javac -d . Etudiant.java
 javac -d . Affichage.java
-java Affichage
+java aff.Affichage

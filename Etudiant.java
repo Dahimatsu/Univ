@@ -1,7 +1,6 @@
 package personne;
 
 import univ.*;
-import date.*;
 
 public class Etudiant {
     String nom;

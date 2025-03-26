@@ -7,11 +7,7 @@ public class Parcours {
     int annee;
     Date debut;
     Date fin;
-    Matiere[] notes;
-
-    public double getEcolage() {
-        return this.filiere.ecolage[this.annee - 1];
-    }
+    Note[] notes;
 
     public Filiere getFiliere() {
         return filiere;
@@ -26,7 +22,8 @@ public class Parcours {
     }
 
     public void setAnnee(int annee) {
-        this.annee = annee;
+        if (annee > 0 && annee <= 12)
+            this.annee = annee;
     }
 
     public Date getDebut() {
@@ -45,15 +42,15 @@ public class Parcours {
         this.fin = fin;
     }
 
-    public Matiere[] getNotes() {
+    public Note[] getNotes() {
         return notes;
     }
 
-    public void setNotes(Matiere[] notes) {
+    public void setNotes(Note[] notes) {
         this.notes = notes;
     }
 
-    public Parcours(Filiere filiere, int annee, Date debut, Date fin, Matiere[] notes) {
+    public Parcours(Filiere filiere, int annee, Date debut, Date fin, Note[] notes) {
         this.filiere = filiere;
         this.annee = annee;
         this.debut = debut;
@@ -61,4 +58,7 @@ public class Parcours {
         this.notes = notes;
     }
 
+    public double getEcolage() {
+        return this.filiere.ecolage[this.annee - 1];
+    }
 }

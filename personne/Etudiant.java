@@ -39,7 +39,8 @@ public class Etudiant {
     }
 
     public void setAnnee(int annee) {
-        this.annee = annee;
+        if (annee > 0 && annee >= 12)
+            this.annee = annee;
     }
 
     public Parcours[] getAntecedent() {
@@ -138,15 +139,26 @@ public class Etudiant {
     }
 
     public double getBourse(double moyenne) {
-        if (moyenne >= 16) {
-            return this.filiere.getBourseMax() * 3 / 3;
-        } else if (moyenne >= 14 && moyenne < 16) {
-            return this.filiere.getBourseMax() * 2 / 3;
-        } else if (moyenne >= 12 && moyenne < 14) {
-            return this.filiere.getBourseMax() * 1 / 3;
+        if (this.sexe == "M") {
+            if (moyenne >= 16) {
+                return this.filiere.getBourseMax() * 3 / 3;
+            } else if (moyenne >= 14 && moyenne < 16) {
+                return this.filiere.getBourseMax() * 2 / 3;
+            } else if (moyenne >= 12 && moyenne < 14) {
+                return this.filiere.getBourseMax() * 1 / 3;
+            } else {
+                return 0;
+            }
         } else {
-            return 0;
+            if (moyenne >= 14) {
+                return this.filiere.getBourseMax() * 3 / 3;
+            } else if (moyenne >= 12 && moyenne < 14) {
+                return this.filiere.getBourseMax() * 2 / 3;
+            } else if (moyenne >= 10 && moyenne < 12) {
+                return this.filiere.getBourseMax() * 1 / 3;
+            } else {
+                return 0;
+            }
         }
     }
-
 }

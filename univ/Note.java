@@ -1,6 +1,6 @@
 package univ;
 
-public class Matiere {
+public class Note {
     String intitule;
     double valeur;
     int coefficient;
@@ -18,7 +18,8 @@ public class Matiere {
     }
 
     public void setValeur(double valeur) {
-        this.valeur = valeur;
+        if (valeur >= 0 && valeur <= 20)
+            this.valeur = valeur;
     }
 
     public int getCoefficient() {
@@ -29,10 +30,9 @@ public class Matiere {
         this.coefficient = coefficient;
     }
 
-    public Matiere(String intitule, double valeur, int coefficient) {
+    public Note(String intitule, double valeur, int coefficient) {
         this.intitule = intitule;
         this.valeur = valeur;
         this.coefficient = coefficient;
     }
-
 }

@@ -7,7 +7,7 @@ import personne.*;
 public class Affichage {
     public static void main(String[] args) {
         Filiere medecine = new Filiere("Medecine", "Scientifique", 200000, 250000, 300000, 350000, 400000, 1000000,
-                1000000);
+                200000);
 
         Parents[] parents = new Parents[4];
         parents[0] = new Parents("P1", 600000, "M1", 300000);
@@ -16,28 +16,28 @@ public class Affichage {
         parents[3] = new Parents("P4", 400000, "M4", 400000);
 
         // Notes année 1 E1
-        Matiere[] e1_note1 = new Matiere[3];
-        e1_note1[0] = new Matiere("Mat1", 10, 5);
-        e1_note1[1] = new Matiere("Mat2", 12, 3);
-        e1_note1[2] = new Matiere("Mat3", 8, 4);
+        Note[] e1_note1 = new Note[3];
+        e1_note1[0] = new Note("Mat1", 10, 5);
+        e1_note1[1] = new Note("Mat2", 12, 3);
+        e1_note1[2] = new Note("Mat3", 8, 4);
 
         // Notes année 2 E1
-        Matiere[] e1_note2 = new Matiere[3];
-        e1_note2[0] = new Matiere("Mat1", 16, 2);
-        e1_note2[1] = new Matiere("Mat2", 10, 1);
-        e1_note2[2] = new Matiere("Mat3", 9, 4);
+        Note[] e1_note2 = new Note[3];
+        e1_note2[0] = new Note("Mat1", 16, 2);
+        e1_note2[1] = new Note("Mat2", 10, 1);
+        e1_note2[2] = new Note("Mat3", 9, 4);
 
         // Notes année 3 E1
-        Matiere[] e1_note3 = new Matiere[6];
-        e1_note3[0] = new Matiere("Mat1", 6, 5);
-        e1_note3[1] = new Matiere("Mat2", 7, 6);
-        e1_note3[2] = new Matiere("Mat3", 12, 4);
+        Note[] e1_note3 = new Note[6];
+        e1_note3[0] = new Note("Mat1", 6, 5);
+        e1_note3[1] = new Note("Mat2", 7, 6);
+        e1_note3[2] = new Note("Mat3", 12, 4);
 
         // Notes année 4 E1
-        Matiere[] e1_note4 = new Matiere[6];
-        e1_note4[0] = new Matiere("Mat1", 15, 3);
-        e1_note4[1] = new Matiere("Mat2", 12, 2);
-        e1_note4[2] = new Matiere("Mat3", 13, 1);
+        Note[] e1_note4 = new Note[6];
+        e1_note4[0] = new Note("Mat1", 15, 3);
+        e1_note4[1] = new Note("Mat2", 12, 2);
+        e1_note4[2] = new Note("Mat3", 13, 6);
 
         // Antecedent E1
         Parcours[] e1_antecedent = new Parcours[4];
@@ -47,16 +47,16 @@ public class Affichage {
         e1_antecedent[3] = new Parcours(medecine, 4, new Date(15, 9, 2024), new Date(5, 7, 2025), e1_note4);
 
         // Notes année 1 E2
-        Matiere[] e2_note1 = new Matiere[3];
-        e2_note1[0] = new Matiere("Mat1", 16, 5);
-        e2_note1[1] = new Matiere("Mat2", 14, 3);
-        e2_note1[2] = new Matiere("Mat3", 12, 4);
+        Note[] e2_note1 = new Note[3];
+        e2_note1[0] = new Note("Mat1", 16, 5);
+        e2_note1[1] = new Note("Mat2", 14, 3);
+        e2_note1[2] = new Note("Mat3", 12, 4);
 
         // Notes année 2 E2
-        Matiere[] e2_note2 = new Matiere[3];
-        e2_note2[0] = new Matiere("Mat1", 16, 2);
-        e2_note2[1] = new Matiere("Mat2", 10, 1);
-        e2_note2[2] = new Matiere("Mat3", 14, 7);
+        Note[] e2_note2 = new Note[3];
+        e2_note2[0] = new Note("Mat1", 16, 2);
+        e2_note2[1] = new Note("Mat2", 10, 1);
+        e2_note2[2] = new Note("Mat3", 14, 7);
 
         // Antecedent E2
         Parcours[] e2_antecedent = new Parcours[2];
@@ -64,26 +64,26 @@ public class Affichage {
         e2_antecedent[1] = new Parcours(medecine, 2, new Date(20, 9, 2023), new Date(10, 7, 2024), e2_note2);
 
         // Notes année 1 E3
-        Matiere[] e3_note1 = new Matiere[3];
-        e3_note1[0] = new Matiere("Mat1", 11, 5);
-        e3_note1[1] = new Matiere("Mat2", 12, 3);
-        e3_note1[2] = new Matiere("Mat3", 10, 4);
+        Note[] e3_note1 = new Note[3];
+        e3_note1[0] = new Note("Mat1", 11, 5);
+        e3_note1[1] = new Note("Mat2", 12, 3);
+        e3_note1[2] = new Note("Mat3", 10, 4);
 
         // Antecedent E3
         Parcours[] e3_antecedent = new Parcours[1];
         e3_antecedent[0] = new Parcours(medecine, 1, new Date(9, 10, 2022), new Date(30, 7, 2023), e3_note1);
 
         // Notes année 1a E4
-        Matiere[] e4_note1a = new Matiere[3];
-        e4_note1a[0] = new Matiere("Mat1", 8, 5);
-        e4_note1a[1] = new Matiere("Mat2", 6, 3);
-        e4_note1a[2] = new Matiere("Mat3", 7, 4);
+        Note[] e4_note1a = new Note[3];
+        e4_note1a[0] = new Note("Mat1", 8, 5);
+        e4_note1a[1] = new Note("Mat2", 6, 3);
+        e4_note1a[2] = new Note("Mat3", 7, 4);
 
         // Notes année 1b E4
-        Matiere[] e4_note1b = new Matiere[3];
-        e4_note1b[0] = new Matiere("Mat1", 14, 5);
-        e4_note1b[1] = new Matiere("Mat2", 16, 3);
-        e4_note1b[2] = new Matiere("Mat3", 16, 4);
+        Note[] e4_note1b = new Note[3];
+        e4_note1b[0] = new Note("Mat1", 14, 5);
+        e4_note1b[1] = new Note("Mat2", 16, 3);
+        e4_note1b[2] = new Note("Mat3", 16, 4);
 
         // Antecedent E4
         Parcours[] e4_antecedent = new Parcours[2];
@@ -102,36 +102,8 @@ public class Affichage {
                     "----------------------------------------------------------------------------------------------------");
             System.out.println("Etudiant " + (i + 1) + ":");
             System.out.println("- Nom: " + etudiants[i].getNom());
-            System.out.println("- Filière: " + medecine.getNom());
-            System.out.println("- Année Actuelle: " + etudiants[i].getAnnee());
-            System.out.println("- Sexe: " + etudiants[i].getSexe());
+
             System.out.println();
-
-            // Parents
-            System.out.println("- Parents:");
-            System.out.println("=> Père: " + etudiants[i].getParents().getPere());
-            System.out.println("=> Salaire: " + etudiants[i].getParents().getSalairePere() + " Ar");
-            System.out.println("=> Mère: " + etudiants[i].getParents().getMere());
-            System.out.println("=> Salaire: " + etudiants[i].getParents().getSalaireMere() + " Ar");
-            System.out.println();
-
-            // Antécédents
-            System.out.println("- Antécédents:");
-            for (int j = 0; j < etudiants[i].getAntecedent().length; j++) {
-                System.out.println("=> Date de début: " + etudiants[i].getAntecedent()[j].getDebut().getJour() + " "
-                        + new Mois(etudiants[i].getAntecedent()[j].getDebut().getMois()).getMois() + " "
-                        + etudiants[i].getAntecedent()[j].getDebut().getAnnee());
-                System.out.println("=> Date de fin: " + etudiants[i].getAntecedent()[j].getFin().getJour() + " "
-                        + new Mois(etudiants[i].getAntecedent()[j].getFin().getMois()).getMois() + " "
-                        + etudiants[i].getAntecedent()[j].getFin().getAnnee());
-                if (etudiants[i].getAntecedent()[j].getAnnee() == 1) {
-                    System.out.println("=> Classe: " + etudiants[i].getAntecedent()[j].getAnnee() + "ère année");
-                } else {
-                    System.out.println("=> Classe: " + etudiants[i].getAntecedent()[j].getAnnee() + "e année");
-                }
-                System.out.println();
-            }
-
             // Bourse
             if (etudiants[i].isRedoublant()) {
                 System.out.println("- Redoublant: Oui");
@@ -145,7 +117,6 @@ public class Affichage {
                         }
                     }
                 }
-
             } else {
                 System.out.println("- Redoublant: Non");
             }
